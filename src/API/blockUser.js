@@ -1,7 +1,15 @@
-export async function blockUser(userId, token, users, setUsers) {
+export async function blockUser(
+  userId,
+  token,
+  users,
+  setUsers,
+  loggedInUserId,
+  setLoggedIn,
+  setToken
+) {
   try {
     const response = await fetch(
-      `https://auth-backend-2014.onrender.com/api/auth/block/${userId}`,
+      `https://auth-backend-2014.onrender.com/api/auth/change-status/${userId}`,
       {
         method: "PUT",
         headers: {
@@ -11,7 +19,7 @@ export async function blockUser(userId, token, users, setUsers) {
         body: JSON.stringify({ isBlocked: true }), // Set the isBlocked value to true
       }
     );
-
+    console.log(response);
     if (response.ok) {
       // Update the user's blocked status in the state
       const updatedUsers = users.map((user) => {
@@ -23,6 +31,12 @@ export async function blockUser(userId, token, users, setUsers) {
       });
 
       setUsers(updatedUsers);
+
+      if (userId === loggedInUserId) {
+        // If the logged-in user blocked their own account
+        setLoggedIn(false); // Set the loggedIn state to false
+        localStorage.removeItem("token"); // Clear the token
+      }
     } else {
       throw new Error("Failed to block the user.");
     }

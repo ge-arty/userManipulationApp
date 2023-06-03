@@ -18,6 +18,11 @@ export async function loginUser(
     );
     if (response.ok) {
       const data = await response.json();
+
+      if (data.isBlocked && data.isBlocked === true) {
+        throw new Error("Login failed: User is blocked.");
+      }
+
       // Handle the login response
       console.log(data);
       // Extract the token and userId from the response
