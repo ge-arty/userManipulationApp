@@ -9,7 +9,7 @@ export async function blockUser(
 ) {
   try {
     const response = await fetch(
-      `https://auth-backend-2014.onrender.com/api/auth/change-status/${userId}`,
+      `https://user-manipulation-app.onrender.com/api/auth/change-status/${userId}`,
       {
         method: "PUT",
         headers: {

@@ -1,7 +1,7 @@
 export async function registerUser(firstName, lastName, email, password) {
   try {
     const response = await fetch(
-      "https://auth-backend-2014.onrender.com/api/auth/register",
+      "https://user-manipulation-app.onrender.com/api/auth/register",
       {
         method: "POST",
         headers: {

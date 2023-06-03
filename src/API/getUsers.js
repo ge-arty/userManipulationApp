@@ -1,7 +1,7 @@
 export async function getUsers(token, setUsers) {
   try {
     const response = await fetch(
-      "https://auth-backend-2014.onrender.com/api/auth/allusers",
+      "https://user-manipulation-app.onrender.com/api/auth/allusers",
       {
         headers: {
           Authorization: `Bearer ${token}`,

@@ -7,7 +7,7 @@ export async function deleteUser(
 ) {
   try {
     const response = await fetch(
-      `https://auth-backend-2014.onrender.com/api/auth/${userId}`,
+      `https://user-manipulation-app.onrender.com/api/auth/${userId}`,
       {
         method: "DELETE",
         headers: {

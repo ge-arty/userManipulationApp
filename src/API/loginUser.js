@@ -7,7 +7,7 @@ export async function loginUser(
 ) {
   try {
     const response = await fetch(
-      "https://auth-backend-2014.onrender.com/api/auth/login",
+      "https://user-manipulation-app.onrender.com/api/auth/login",
       {
         method: "POST",
         headers: {
