@@ -81,16 +81,18 @@ const UserList = ({ token, loggedInUserId, setLoggedIn }) => {
       <div className="userlist-users">
         {users.map((user) => (
           <div className="userlist-user" key={user._id}>
-            <input
-              type="checkbox"
-              checked={selectedUsers.includes(user._id)}
-              onChange={() => toggleUserSelection(user._id)}
-            />
-            <label>Select</label>
+            <div>
+              <input
+                type="checkbox"
+                checked={selectedUsers.includes(user._id)}
+                onChange={() => toggleUserSelection(user._id)}
+              />
+              <label>Select</label>
+              <p>
+                Name: {user.firstName} {user.lastName}
+              </p>
+            </div>
 
-            <p>
-              Name: {user.firstName} {user.lastName}
-            </p>
             <p>Email: {user.email}</p>
             {user.isBlocked ? (
               <p>This user is Blocked!</p>
