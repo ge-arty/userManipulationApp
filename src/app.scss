@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.error {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: rgb(180, 177, 177);
+  padding: 2rem;
+  .login-wrapper {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border: 2px solid rgb(146, 101, 3);
+    border-radius: 20px;
+    padding: 2rem 0;
+    .login-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      .login-title {
+        font-size: 32px;
+        margin-bottom: 1rem;
+      }
+      .login-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        label {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          margin-bottom: 10px;
+          input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+          }
+        }
+        button {
+          margin-top: 1rem;
+          padding: 10px 20px;
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          &:hover {
+            background-color: #0056b3;
+          }
+        }
+      }
+    }
+    .userlist-wrapper {
+      width: 100%;
+      .userlist-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        height: 150px;
+        margin: 10px;
+        .userlist-btn__wrapper {
+          width: 100%;
+          max-width: 200px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          button {
+            margin-top: 1rem;
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            &:hover {
+              background-color: #0056b3;
+            }
+          }
+        }
+      }
+      .userlist-users {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        .userlist-user {
+          background-color: #007bff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          width: 200px;
+          padding: 10px;
+          border-radius: 20px;
+          height: 200px;
+        }
+      }
+      .userlist-logout {
+        width: 100%;
+        max-width: 200px;
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #ff0000;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  }
+  .register-container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid rgb(146, 101, 3);
+    border-radius: 20px;
+    padding: 2rem 0;
+    .register-title {
+      font-size: 32px;
+      margin-bottom: 1rem;
+    }
+    .register-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      label {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 10px;
+        input {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+        }
+      }
+      button {
+        margin-top: 1rem;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  }
+}

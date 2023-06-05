@@ -4,8 +4,7 @@ export async function blockUser(
   users,
   setUsers,
   loggedInUserId,
-  setLoggedIn,
-  setToken
+  setLoggedIn
 ) {
   try {
     const response = await fetch(

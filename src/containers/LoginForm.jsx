@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import UserList from "./UserList";
 import { loginUser } from "../API/loginUser";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -8,15 +9,17 @@ const LoginForm = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState(""); // Add userId state
+  const [error, setError] = useState("");
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     // Make a POST request to the login endpoint with email and password
-    loginUser(email, password, setLoggedIn, setToken, setUserId);
+    loginUser(email, password, setLoggedIn, setToken, setUserId, setError);
+    console.log(error);
   };
 
   return (
-    <div>
+    <div className="login-wrapper">
       {isLoggedIn ? (
         <UserList
           token={token}
@@ -24,9 +27,9 @@ const LoginForm = () => {
           setLoggedIn={setLoggedIn}
         />
       ) : (
-        <div>
-          <h2>Login</h2>
-          <form onSubmit={handleLoginSubmit}>
+        <div className="login-container">
+          <h2 className="login-title">Login</h2>
+          <form className="login-form" onSubmit={handleLoginSubmit}>
             <label>
               Email:
               <input
@@ -46,7 +49,9 @@ const LoginForm = () => {
                 required
               />
             </label>
+            {error && <p className="error">{error}</p>}
             <br />
+            <Link to="/registration">Don't have account? Register here!</Link>
             <button type="submit">Login</button>
           </form>
         </div>

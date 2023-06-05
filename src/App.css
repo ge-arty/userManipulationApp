@@ -1,42 +1,178 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.error {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: rgb(180, 177, 177);
   padding: 2rem;
-  text-align: center;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.app-container .login-wrapper {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border: 2px solid rgb(146, 101, 3);
+  border-radius: 20px;
+  padding: 2rem 0;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.app-container .login-wrapper .login-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.app-container .login-wrapper .login-container .login-title {
+  font-size: 32px;
+  margin-bottom: 1rem;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app-container .login-wrapper .login-container .login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.app-container .login-wrapper .login-container .login-form label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
 }
-
-.card {
-  padding: 2em;
+.app-container .login-wrapper .login-container .login-form label input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
-
-.read-the-docs {
-  color: #888;
+.app-container .login-wrapper .login-container .login-form button {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
+.app-container .login-wrapper .login-container .login-form button:hover {
+  background-color: #0056b3;
+}
+.app-container .login-wrapper .userlist-wrapper {
+  width: 100%;
+}
+.app-container .login-wrapper .userlist-wrapper .userlist-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 150px;
+  margin: 10px;
+}
+.app-container .login-wrapper .userlist-wrapper .userlist-container .userlist-btn__wrapper {
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.app-container .login-wrapper .userlist-wrapper .userlist-container .userlist-btn__wrapper button {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.app-container .login-wrapper .userlist-wrapper .userlist-container .userlist-btn__wrapper button:hover {
+  background-color: #0056b3;
+}
+.app-container .login-wrapper .userlist-wrapper .userlist-users {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.app-container .login-wrapper .userlist-wrapper .userlist-users .userlist-user {
+  background-color: #007bff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 200px;
+  padding: 10px;
+  border-radius: 20px;
+  height: 200px;
+}
+.app-container .login-wrapper .userlist-wrapper .userlist-logout {
+  width: 100%;
+  max-width: 200px;
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.app-container .login-wrapper .userlist-wrapper .userlist-logout:hover {
+  background-color: #0056b3;
+}
+.app-container .register-container {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid rgb(146, 101, 3);
+  border-radius: 20px;
+  padding: 2rem 0;
+}
+.app-container .register-container .register-title {
+  font-size: 32px;
+  margin-bottom: 1rem;
+}
+.app-container .register-container .register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.app-container .register-container .register-form label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.app-container .register-container .register-form label input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.app-container .register-container .register-form button {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.app-container .register-container .register-form button:hover {
+  background-color: #0056b3;
+}/*# sourceMappingURL=app.css.map */

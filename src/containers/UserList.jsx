@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { getUsers } from "../API/getUsers";
 import { deleteUser } from "../API/deleteUser";
 import { blockUser } from "../API/blockUser";
@@ -47,42 +47,60 @@ const UserList = ({ token, loggedInUserId, setLoggedIn }) => {
     }
   };
 
+  const formatTimestamp = (timestamp) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(timestamp).toLocaleString(undefined, options);
+  };
+
   return (
-    <div>
-      <h2>User List</h2>
-      <button onClick={logout}>LOGOUT</button>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={selectedUsers.length === users.length}
-            onChange={handleSelectAll}
-          />
-          Select All
-        </label>
-      </div>
-      <button onClick={handleDeleteUser}>Delete</button>
-      <button onClick={handleBlockUser}>
-        {selectedUsers.length > 0 &&
-        users.find((user) => user._id === selectedUsers[0]).isBlocked
-          ? "Unblock"
-          : "Block"}
-      </button>
-      {users.map((user) => (
-        <div key={user._id}>
-          <p>
-            Name: {user.firstName} {user.lastName}
-          </p>
-          <p>Email: {user.email}</p>
-          <input
-            type="checkbox"
-            checked={selectedUsers.includes(user._id)}
-            onChange={() => toggleUserSelection(user._id)}
-          />
-          <p>Last Online : {user.updatedAt}</p>
-          <p>Register Date: {user.createdAt}</p>
+    <div className="userlist-wrapper">
+      <div className="userlist-container">
+        <h2 className="userlist-title">User List</h2>
+
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={selectedUsers.length === users.length}
+              onChange={handleSelectAll}
+            />
+            Select All
+          </label>
         </div>
-      ))}
+        <div className="userlist-btn__wrapper">
+          <button onClick={handleDeleteUser}>Delete</button>
+          <button onClick={handleBlockUser}>
+            {selectedUsers.length > 0 &&
+            users.find((user) => user._id === selectedUsers[0]).isBlocked
+              ? "Unblock"
+              : "Block"}
+          </button>
+        </div>
+      </div>
+
+      <div className="userlist-users">
+        {users.map((user) => (
+          <div className="userlist-user" key={user._id}>
+            <input
+              type="checkbox"
+              checked={selectedUsers.includes(user._id)}
+              onChange={() => toggleUserSelection(user._id)}
+            />
+            <label>Select</label>
+
+            <p>
+              Name: {user.firstName} {user.lastName}
+            </p>
+            <p>Email: {user.email}</p>
+            <div></div>
+            <p>Last Update: {formatTimestamp(user.updatedAt)}</p>
+            <p>Register Date: {formatTimestamp(user.createdAt)}</p>
+          </div>
+        ))}
+      </div>
+      <button className="userlist-logout" onClick={logout}>
+        LOGOUT
+      </button>
     </div>
   );
 };

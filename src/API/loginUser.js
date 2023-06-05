@@ -3,7 +3,8 @@ export async function loginUser(
   password,
   setLoggedIn,
   setToken,
-  setUserId
+  setUserId,
+  setError
 ) {
   try {
     const response = await fetch(
@@ -18,7 +19,6 @@ export async function loginUser(
     );
     if (response.ok) {
       const data = await response.json();
-
       if (data.isBlocked && data.isBlocked === true) {
         throw new Error("Login failed: User is blocked.");
       }
@@ -36,11 +36,11 @@ export async function loginUser(
       setUserId(loggedInUserId);
       return data; // Return the login data if needed
     } else {
-      throw new Error("Login failed");
+      throw new Error("Login failed, account does not exist!");
     }
   } catch (error) {
-    // Handle the error
+    // Handle the error within the component
+    setError(error.message);
     console.error(error);
-    throw error; // Throw the error again if needed
   }
 }
