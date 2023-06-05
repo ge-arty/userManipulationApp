@@ -92,7 +92,11 @@ const UserList = ({ token, loggedInUserId, setLoggedIn }) => {
               Name: {user.firstName} {user.lastName}
             </p>
             <p>Email: {user.email}</p>
-            <div></div>
+            {user.isBlocked ? (
+              <p>This user is Blocked!</p>
+            ) : (
+              <p>This user is not blocked!</p>
+            )}
             <p>Last Update: {formatTimestamp(user.updatedAt)}</p>
             <p>Register Date: {formatTimestamp(user.createdAt)}</p>
           </div>
