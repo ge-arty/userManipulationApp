@@ -19,6 +19,7 @@ export async function blockUser(
         body: JSON.stringify({ isBlocked: value }), // Set the isBlocked value
       }
     );
+    // log response
     console.log(response);
     if (response.ok) {
       if (userId === loggedInUserId) {
