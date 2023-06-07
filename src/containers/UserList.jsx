@@ -11,22 +11,29 @@ const UserList = ({ token, loggedInUserId, setLoggedIn }) => {
     getUsers(token, setUsers);
   }, [token]);
 
-  function logout() {
-    setLoggedIn(false);
-    localStorage.removeItem("token");
-  }
-
   const handleDeleteUser = () => {
     selectedUsers.forEach((userId) => {
       deleteUser(userId, token, loggedInUserId, setLoggedIn, setUsers);
     });
     setSelectedUsers([]);
   };
+  const handleBlockUser = async (value) => {
+    await Promise.all(
+      selectedUsers.map(async (userId) => {
+        return blockUser(
+          userId,
+          token,
+          users,
+          setUsers,
+          loggedInUserId,
+          setLoggedIn,
+          value
+        );
+      })
+    );
 
-  const handleBlockUser = () => {
-    selectedUsers.forEach((userId) => {
-      blockUser(userId, token, users, setUsers, loggedInUserId, setLoggedIn);
-    });
+    getUsers(token, setUsers);
+
     setSelectedUsers([]);
   };
 
@@ -68,45 +75,44 @@ const UserList = ({ token, loggedInUserId, setLoggedIn }) => {
           </label>
         </div>
         <div className="userlist-btn__wrapper">
+          <button onClick={() => handleBlockUser(true)}>Block</button>
           <button onClick={handleDeleteUser}>Delete</button>
-          <button onClick={handleBlockUser}>
-            {selectedUsers.length > 0 &&
-            users.find((user) => user._id === selectedUsers[0]).isBlocked
-              ? "Unblock"
-              : "Block"}
-          </button>
+          <button onClick={() => handleBlockUser(false)}>unBlock</button>
         </div>
       </div>
 
-      <div className="userlist-users">
-        {users.map((user) => (
-          <div className="userlist-user" key={user._id}>
-            <div>
-              <input
-                type="checkbox"
-                checked={selectedUsers.includes(user._id)}
-                onChange={() => toggleUserSelection(user._id)}
-              />
-              <label>Select</label>
-              <p>
-                Name: {user.firstName} {user.lastName}
-              </p>
-            </div>
-
-            <p>Email: {user.email}</p>
-            {user.isBlocked ? (
-              <p>This user is Blocked!</p>
-            ) : (
-              <p>This user is not blocked!</p>
-            )}
-            <p>Last Update: {formatTimestamp(user.updatedAt)}</p>
-            <p>Register Date: {formatTimestamp(user.createdAt)}</p>
-          </div>
-        ))}
-      </div>
-      <button className="userlist-logout" onClick={logout}>
-        LOGOUT
-      </button>
+      <table>
+        <thead>
+          <tr>
+            <th>Select</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Blocked</th>
+            <th>Last Update</th>
+            <th>Register Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user._id}>
+              <td>
+                <input
+                  type="checkbox"
+                  checked={selectedUsers.includes(user._id)}
+                  onChange={() => toggleUserSelection(user._id)}
+                />
+              </td>
+              <td>
+                {user.firstName} {user.lastName}
+              </td>
+              <td>{user.email}</td>
+              <td>{user.isBlocked ? "Blocked" : "Not blocked"}</td>
+              <td>{formatTimestamp(user.updatedAt)}</td>
+              <td>{formatTimestamp(user.createdAt)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

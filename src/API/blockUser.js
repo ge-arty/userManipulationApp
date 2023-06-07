@@ -4,7 +4,8 @@ export async function blockUser(
   users,
   setUsers,
   loggedInUserId,
-  setLoggedIn
+  setLoggedIn,
+  value
 ) {
   try {
     const response = await fetch(
@@ -15,22 +16,11 @@ export async function blockUser(
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ isBlocked: true }), // Set the isBlocked value to true
+        body: JSON.stringify({ isBlocked: value }), // Set the isBlocked value
       }
     );
     console.log(response);
     if (response.ok) {
-      // Update the user's blocked status in the state
-      const updatedUsers = users.map((user) => {
-        if (user._id === userId) {
-          console.log(user);
-          return { ...user, isBlocked: !user.isBlocked };
-        }
-        return user;
-      });
-
-      setUsers(updatedUsers);
-
       if (userId === loggedInUserId) {
         // If the logged-in user blocked their own account
         setLoggedIn(false); // Set the loggedIn state to false

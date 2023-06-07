@@ -17,15 +17,24 @@ const LoginForm = () => {
     loginUser(email, password, setLoggedIn, setToken, setUserId, setError);
     console.log(error);
   };
+  function logout() {
+    setLoggedIn(false);
+    localStorage.removeItem("token");
+  }
 
   return (
     <div className="login-wrapper">
       {isLoggedIn ? (
-        <UserList
-          token={token}
-          loggedInUserId={userId}
-          setLoggedIn={setLoggedIn}
-        />
+        <div className="userlist">
+          <button className="userlist-logout" onClick={logout}>
+            LOGOUT
+          </button>
+          <UserList
+            token={token}
+            loggedInUserId={userId}
+            setLoggedIn={setLoggedIn}
+          />
+        </div>
       ) : (
         <div className="login-container">
           <h2 className="login-title">Login</h2>

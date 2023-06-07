@@ -18,7 +18,7 @@
   padding: 2rem;
   .login-wrapper {
     width: 100%;
-    max-width: 500px;
+    max-width: 700px;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -65,54 +65,8 @@
         }
       }
     }
-    .userlist-wrapper {
+    .userlist {
       width: 100%;
-      .userlist-container {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: column;
-        height: 150px;
-        margin: 10px;
-        .userlist-btn__wrapper {
-          width: 100%;
-          max-width: 200px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          button {
-            margin-top: 1rem;
-            padding: 10px 20px;
-            background-color: #ff0000;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            &:hover {
-              background-color: #0056b3;
-            }
-          }
-        }
-      }
-      .userlist-users {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 2rem;
-        .userlist-user {
-          background-color: #007bff;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-wrap: wrap;
-          width: 200px;
-          padding: 10px;
-          border-radius: 20px;
-          height: 250px;
-        }
-      }
       .userlist-logout {
         width: 100%;
         max-width: 200px;
@@ -126,6 +80,44 @@
         cursor: pointer;
         &:hover {
           background-color: #0056b3;
+        }
+      }
+      .userlist-wrapper {
+        width: 100%;
+        .userlist-container {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: column;
+          margin-bottom: 10px;
+          .userlist-btn__wrapper {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            button {
+              margin-top: 1rem;
+              padding: 10px 20px;
+              background-color: #ff0000;
+              color: #fff;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              &:hover {
+                background-color: #0056b3;
+              }
+            }
+          }
+        }
+
+        table {
+          padding: 5px;
+          width: 100%;
+          td {
+            text-align: center;
+          }
         }
       }
     }
