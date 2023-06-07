@@ -91,6 +91,12 @@
           align-items: center;
           flex-direction: column;
           margin-bottom: 10px;
+          .userlist-title {
+            margin-bottom: 10px;
+          }
+          input {
+            margin-right: 5px;
+          }
           .userlist-btn__wrapper {
             width: 100%;
             max-width: 400px;

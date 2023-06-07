@@ -97,6 +97,12 @@
   flex-direction: column;
   margin-bottom: 10px;
 }
+.app-container .login-wrapper .userlist .userlist-wrapper .userlist-container .userlist-title {
+  margin-bottom: 10px;
+}
+.app-container .login-wrapper .userlist .userlist-wrapper .userlist-container input {
+  margin-right: 5px;
+}
 .app-container .login-wrapper .userlist .userlist-wrapper .userlist-container .userlist-btn__wrapper {
   width: 100%;
   max-width: 400px;
