@@ -22,6 +22,7 @@ export async function blockUser(
     // log response
     console.log(response);
     if (response.ok) {
+      console.log(value);
       if (userId === loggedInUserId && value === true) {
         // If the logged-in user blocked their own account
         setLoggedIn(false); // Set the loggedIn state to false
